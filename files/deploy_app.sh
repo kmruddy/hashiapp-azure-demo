@@ -9,7 +9,7 @@ cat << EOM > /var/www/html/index.html
   <div style="width:800px;margin: 0 auto">
   <!-- BEGIN -->
   <center><img src="${URL}"></img></center>
-  <center><h1>${} says "Hello Everyone!" from Terraform ${WATFVER}!</h1></center>
+  <center><h1>${HAPP} says "Hello Everyone!" from Terraform ${WATFVER}!</h1></center>
   <center><h3>Sourcing Terraform ${RGTFVER} state, Resource Group Name: ${PREFIX}</h3></center>
   <center><h3>Sourcing Terraform ${NTFVER} state, FQDN: ${FQDN}</h3></center>
   <center><h3>Sourcing Terraform ${VMTFVER} state, the VM's name: ${VMNAME}</h3></center>
