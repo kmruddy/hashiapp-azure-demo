@@ -43,7 +43,7 @@ resource "random_integer" "rand_int" {
 
 resource "random_shuffle" "happ_name" {
   input        = ["Vagrant", "Packer", "Terraform", "Vault", "Nomad", "Consul", "Waypoint", "Boundary"]
-  result_count = 1
+  result_count = random_integer.rand_int.result
 }
 
 resource "null_resource" "configure-happ" {
@@ -68,7 +68,7 @@ resource "null_resource" "configure-happ" {
       "sudo systemctl start apache2",
       "sudo chown -R ${data.terraform_remote_state.haavm.outputs.credentials.username}:${data.terraform_remote_state.haavm.outputs.credentials.username} /var/www/html",
       "chmod +x *.sh",
-      "URL=${var.hashi_products[random_shuffle.happ_name.result[random_integer.rand_int.result]]} HAPP=${random_shuffle.happ_name.result} PREFIX=${data.terraform_remote_state.haarg.outputs.rg_name} FQDN=${data.terraform_remote_state.haan.outputs.happ_fqdn} VMNAME=${data.terraform_remote_state.haavm.outputs.vmname} WATFVER=${var.tfver} RGTFVER=${data.terraform_remote_state.haarg.outputs.tfver} NTFVER=${data.terraform_remote_state.haan.outputs.tfver} VMTFVER=${data.terraform_remote_state.haavm.outputs.tfver} ./deploy_app.sh",
+      "URL=${var.hashi_products[random_shuffle.happ_name.result[0]]} HAPP=${random_shuffle.happ_name.result} PREFIX=${data.terraform_remote_state.haarg.outputs.rg_name} FQDN=${data.terraform_remote_state.haan.outputs.happ_fqdn} VMNAME=${data.terraform_remote_state.haavm.outputs.vmname} WATFVER=${var.tfver} RGTFVER=${data.terraform_remote_state.haarg.outputs.tfver} NTFVER=${data.terraform_remote_state.haan.outputs.tfver} VMTFVER=${data.terraform_remote_state.haavm.outputs.tfver} ./deploy_app.sh",
     ]
 
     connection {
