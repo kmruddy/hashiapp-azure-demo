@@ -73,5 +73,5 @@ resource "null_resource" "configure-happ" {
 }
 
 output "happ_fqdn" {
-  value = data.terraform_remote_state.hcan.outputs.happ_fqdn
+  value = data.terraform_remote_state.haan.outputs.happ_fqdn
 }
