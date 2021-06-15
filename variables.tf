@@ -10,7 +10,6 @@ variable "hashi_products" {
     "Waypoint"  = "https://www.datocms-assets.com/2885/1620155130-brandhcwaypointprimaryattributedcolor.svg"
     "Boundary"  = "https://www.datocms-assets.com/2885/1620155080-brandhcboundaryprimaryattributedcolor.svg"
   }
-
 }
 
 variable "tfver" {
